@@ -190,15 +190,37 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'Анна Петрова', subject: 'Математика', experience: '15 лет', fact: 'Автор методики развития логического мышления' },
-              { name: 'Михаил Соколов', subject: 'Физика', experience: '12 лет', fact: 'Опыт работы в MIT, автор 20+ научных статей' },
-              { name: 'Елена Волкова', subject: 'Английский язык', experience: '18 лет', fact: '10 лет в международных школах Великобритании' }
+              { 
+                name: 'Анна Петрова', 
+                subject: 'Математика', 
+                experience: '15 лет', 
+                fact: 'Автор методики развития логического мышления',
+                image: 'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/07a2fab6-a47c-4771-b86b-6d59eac63992.jpg'
+              },
+              { 
+                name: 'Михаил Соколов', 
+                subject: 'Физика', 
+                experience: '12 лет', 
+                fact: 'Опыт работы в MIT, автор 20+ научных статей',
+                image: 'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/c01813f5-1558-4281-960a-c44544efd306.jpg'
+              },
+              { 
+                name: 'Елена Волкова', 
+                subject: 'Английский язык', 
+                experience: '18 лет', 
+                fact: '10 лет в международных школах Великобритании',
+                image: 'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/a643b8a3-b42b-460f-8c53-2080b31edeab.jpg'
+              }
             ].map((teacher, idx) => (
-              <Card key={idx} className="border-0 shadow-lg hover:shadow-xl transition-all">
+              <Card key={idx} className="border-0 shadow-lg hover:shadow-xl transition-all overflow-hidden">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src={teacher.image} 
+                    alt={teacher.name}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
                 <CardHeader>
-                  <div className="w-32 h-32 bg-gradient-to-br from-slate-200 to-slate-300 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Icon name="User" size={48} className="text-slate-600" />
-                  </div>
                   <CardTitle className="text-center text-xl">{teacher.name}</CardTitle>
                   <CardDescription className="text-center">
                     <span className="block text-sky-600 font-medium">{teacher.subject}</span>
