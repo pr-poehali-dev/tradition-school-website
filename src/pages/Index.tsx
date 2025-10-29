@@ -252,6 +252,105 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="testimonials" className="py-20 bg-gradient-to-b from-sky-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Что говорят родители</h2>
+            <p className="text-xl text-slate-600">Реальные истории семей, которые доверили нам будущее своих детей</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {[
+              {
+                name: 'Елена Смирнова',
+                role: 'Мама Андрея, 3 класс',
+                video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                quote: 'Сын стал с удовольствием ходить в школу. Здесь его действительно слышат и понимают.',
+                avatar: '👩'
+              },
+              {
+                name: 'Дмитрий Кузнецов',
+                role: 'Папа Марии, 9 класс',
+                video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                quote: 'Дочь поступила в МГУ с высокими баллами. Школа дала не только знания, но и уверенность.',
+                avatar: '👨'
+              }
+            ].map((testimonial, idx) => (
+              <Card key={idx} className="border-0 shadow-lg overflow-hidden">
+                <div className="aspect-video bg-slate-900 relative group cursor-pointer">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon name="Play" size={32} className="text-sky-600 ml-1" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <p className="text-white text-sm italic">"{testimonial.quote}"</p>
+                  </div>
+                </div>
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-sky-600 rounded-full flex items-center justify-center text-3xl">
+                      {testimonial.avatar}
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg">{testimonial.name}</CardTitle>
+                      <CardDescription>{testimonial.role}</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-slate-900 mb-8 text-center">Текстовые отзывы</h3>
+            <div className="space-y-6">
+              {[
+                {
+                  name: 'Ольга Петрова',
+                  role: 'Мама близнецов, 5 класс',
+                  text: 'Мы перевели детей из обычной школы и не пожалели ни секунды. Индивидуальный подход — это не просто слова. Учителя знают особенности каждого ребенка и работают с ними.',
+                  rating: 5
+                },
+                {
+                  name: 'Александр Иванов',
+                  role: 'Папа Никиты, 11 класс',
+                  text: 'Сын получил 98 баллов на ЕГЭ по физике и поступил в МФТИ. Большое спасибо преподавателям школы за подготовку и веру в него!',
+                  rating: 5
+                },
+                {
+                  name: 'Мария Волкова',
+                  role: 'Мама Софии, 1 класс',
+                  text: 'Дочь пошла в первый класс с большим волнением, но уже через неделю не хотела уходить домой! Атмосфера в школе невероятно теплая и дружелюбная.',
+                  rating: 5
+                }
+              ].map((review, idx) => (
+                <Card key={idx} className="border-0 shadow-lg">
+                  <CardContent className="pt-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Icon name="User" size={24} className="text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          {[...Array(review.rating)].map((_, i) => (
+                            <Icon key={i} name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
+                          ))}
+                        </div>
+                        <p className="text-slate-700 mb-4">"{review.text}"</p>
+                        <div>
+                          <p className="font-bold text-slate-900">{review.name}</p>
+                          <p className="text-sm text-slate-600">{review.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="py-20 bg-gradient-to-b from-sky-50 to-sky-100">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
