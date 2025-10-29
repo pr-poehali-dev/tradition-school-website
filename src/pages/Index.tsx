@@ -87,7 +87,7 @@ const Index = () => {
               <div className="absolute -top-4 -left-4 w-72 h-72 bg-sky-200 rounded-full blur-3xl opacity-30"></div>
               <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-orange-200 rounded-full blur-3xl opacity-30"></div>
               <img 
-                src="/placeholder.svg" 
+                src="https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/cfbac225-d485-4b78-b7be-844527208540.jpg" 
                 alt="Счастливые дети в школе" 
                 className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
               />
@@ -224,16 +224,30 @@ const Index = () => {
               { title: 'Библиотека', icon: 'Library' },
               { title: 'Творческие студии', icon: 'Palette' },
               { title: 'Зоны отдыха', icon: 'Sofa' }
-            ].map((facility, idx) => (
-              <Card key={idx} className="border-0 shadow-lg overflow-hidden hover-scale cursor-pointer">
-                <div className="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-                  <Icon name={facility.icon as any} size={64} className="text-slate-600" />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-center">{facility.title}</CardTitle>
-                </CardHeader>
-              </Card>
-            ))}
+            ].map((facility, idx) => {
+              const images = [
+                'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/cfbac225-d485-4b78-b7be-844527208540.jpg',
+                'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/9b891c67-8a3e-4fed-8697-b20a611c9560.jpg',
+                'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/5c2497aa-5ed2-4673-aedc-bf6866d25a21.jpg',
+                'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/cfbac225-d485-4b78-b7be-844527208540.jpg',
+                'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/9b891c67-8a3e-4fed-8697-b20a611c9560.jpg',
+                'https://cdn.poehali.dev/projects/6a65be1b-1fb7-4cd9-bf99-3b2e24079603/files/5c2497aa-5ed2-4673-aedc-bf6866d25a21.jpg'
+              ];
+              return (
+                <Card key={idx} className="border-0 shadow-lg overflow-hidden hover-scale cursor-pointer">
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={images[idx]} 
+                      alt={facility.title} 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-center">{facility.title}</CardTitle>
+                  </CardHeader>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
