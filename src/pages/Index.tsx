@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
@@ -33,8 +34,8 @@ const Index = () => {
             <a href="#about" className="text-slate-600 hover:text-sky-600 transition-colors">О школе</a>
             <a href="#programs" className="text-slate-600 hover:text-sky-600 transition-colors">Программы</a>
             <a href="#teachers" className="text-slate-600 hover:text-sky-600 transition-colors">Преподаватели</a>
-            <a href="#success" className="text-slate-600 hover:text-sky-600 transition-colors">Успехи</a>
-            <a href="#campus" className="text-slate-600 hover:text-sky-600 transition-colors">Кампус</a>
+            <a href="#testimonials" className="text-slate-600 hover:text-sky-600 transition-colors">Отзывы</a>
+            <a href="#faq" className="text-slate-600 hover:text-sky-600 transition-colors">Вопросы</a>
           </nav>
           <Button className="bg-orange-500 hover:bg-orange-600">
             <Icon name="Phone" size={18} className="mr-2" />
@@ -347,6 +348,113 @@ const Index = () => {
                 </Card>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Частые вопросы родителей</h2>
+            <p className="text-xl text-slate-600">Ответы на самые важные вопросы о поступлении и обучении</p>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="item-1" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Какие документы нужны для поступления?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  Для поступления необходимы: копия свидетельства о рождении ребенка, копия паспорта одного из родителей, 
+                  медицинская карта формы 026/у, справка о прививках, фото 3x4 (2 шт). Также потребуется заполнить анкету, 
+                  которую можно получить в приемной комиссии или скачать на сайте.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Сколько стоит обучение?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  Стоимость зависит от программы: дошкольное образование — 45 000 руб/мес, начальная школа — 55 000 руб/мес, 
+                  средняя школа — 60 000 руб/мес, старшая школа — 65 000 руб/мес. В стоимость входит: обучение, питание, 
+                  учебные материалы, кружки. Возможна рассрочка платежа. Для многодетных семей предусмотрены скидки.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Есть ли вступительные экзамены?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  Для дошкольников и начальной школы (1-2 класс) проводится знакомство в игровой форме. 
+                  Для учеников 3-11 классов — тестирование по математике и русскому языку, соответствующее возрасту. 
+                  Цель тестирования — определить уровень подготовки для формирования индивидуальной программы, а не отбор.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Сколько детей в классе?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  В наших классах обучается не более 12 учеников. Это оптимальное количество для того, чтобы учитель мог 
+                  уделить внимание каждому ребенку, учитывать его особенности и темп обучения, при этом сохраняя 
+                  коллективную динамику и социализацию.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Предусмотрено ли питание?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  Да, в стоимость обучения входит 4-разовое питание: завтрак, обед, полдник и ужин (для групп продленного дня). 
+                  Меню разработано профессиональным диетологом с учетом возрастных потребностей. Мы учитываем индивидуальные 
+                  особенности: аллергии, непереносимость продуктов, религиозные предпочтения.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-6" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Есть ли школьный транспорт?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  Да, мы предоставляем услугу школьного автобуса. Развозка организована по нескольким маршрутам в пределах 
+                  МКАД. Стоимость — 8 000 руб/мес. В автобусах установлены детские кресла, система видеонаблюдения, 
+                  сопровождает педагог. Точное расписание и маршруты можно уточнить в приемной комиссии.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-7" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Можно ли перевестись из другой школы в середине года?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  Да, мы принимаем учеников в течение всего учебного года при наличии свободных мест. Проводится 
+                  входное тестирование для определения уровня знаний. При необходимости организуем дополнительные 
+                  консультации с педагогами для более мягкой адаптации и подтягивания материала.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-8" className="border-0 bg-white shadow-lg rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold text-slate-900 hover:text-sky-600">
+                  Какие кружки и секции доступны?
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-600">
+                  В школе работают более 20 кружков и секций, включенных в стоимость обучения: шахматы, робототехника, 
+                  программирование, театральная студия, хор, изостудия, гончарная мастерская, английский клуб, каратэ, 
+                  футбол, плавание, танцы. Занятия проводятся после основных уроков, расписание согласовывается индивидually.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+          <div className="text-center mt-12">
+            <p className="text-slate-600 mb-6">Не нашли ответ на свой вопрос?</p>
+            <Button size="lg" className="bg-sky-600 hover:bg-sky-700">
+              <Icon name="MessageCircle" size={20} className="mr-2" />
+              Задать вопрос
+            </Button>
           </div>
         </div>
       </section>
