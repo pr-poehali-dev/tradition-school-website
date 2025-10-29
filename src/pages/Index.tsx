@@ -14,6 +14,7 @@ const Index = () => {
     email: '',
     message: ''
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,14 +35,42 @@ const Index = () => {
             <a href="#about" className="text-slate-600 hover:text-sky-600 transition-colors">О школе</a>
             <a href="#programs" className="text-slate-600 hover:text-sky-600 transition-colors">Программы</a>
             <a href="#teachers" className="text-slate-600 hover:text-sky-600 transition-colors">Преподаватели</a>
+            <a href="#pricing" className="text-slate-600 hover:text-sky-600 transition-colors">Стоимость</a>
             <a href="#testimonials" className="text-slate-600 hover:text-sky-600 transition-colors">Отзывы</a>
             <a href="#faq" className="text-slate-600 hover:text-sky-600 transition-colors">Вопросы</a>
           </nav>
-          <Button className="bg-orange-500 hover:bg-orange-600">
-            <Icon name="Phone" size={18} className="mr-2" />
-            8 (800) 123-45-67
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button className="hidden md:flex bg-orange-500 hover:bg-orange-600">
+              <Icon name="Phone" size={18} className="mr-2" />
+              8 (800) 123-45-67
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={24} />
+            </Button>
+          </div>
         </div>
+        
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-200 animate-fade-in">
+            <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
+              <a href="#about" className="text-slate-600 hover:text-sky-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>О школе</a>
+              <a href="#programs" className="text-slate-600 hover:text-sky-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>Программы</a>
+              <a href="#teachers" className="text-slate-600 hover:text-sky-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>Преподаватели</a>
+              <a href="#pricing" className="text-slate-600 hover:text-sky-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>Стоимость</a>
+              <a href="#testimonials" className="text-slate-600 hover:text-sky-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>Отзывы</a>
+              <a href="#faq" className="text-slate-600 hover:text-sky-600 transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>Вопросы</a>
+              <Button className="bg-orange-500 hover:bg-orange-600 w-full">
+                <Icon name="Phone" size={18} className="mr-2" />
+                8 (800) 123-45-67
+              </Button>
+            </nav>
+          </div>
+        )}
       </header>
 
       <section className="pt-32 pb-20 px-4">
@@ -185,7 +214,106 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="success" className="py-20 bg-gradient-to-b from-sky-50 to-white">
+      <section id="pricing" className="py-20 bg-gradient-to-b from-sky-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Стоимость обучения</h2>
+            <p className="text-xl text-slate-600">Прозрачные цены и гибкие условия для каждой семьи</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              {
+                title: 'Дошкольное',
+                age: '3-6 лет',
+                price: '45 000',
+                color: 'from-pink-500 to-pink-600',
+                icon: 'Baby',
+                features: ['4-разовое питание', 'Подготовка к школе', 'Развивающие занятия', 'Игровые площадки']
+              },
+              {
+                title: 'Начальная школа',
+                age: '1-4 классы',
+                price: '55 000',
+                color: 'from-sky-500 to-sky-600',
+                icon: 'School',
+                features: ['Малокомплектные классы', 'ФГОС + доп. программы', 'Кружки включены', 'Психолог']
+              },
+              {
+                title: 'Средняя школа',
+                age: '5-9 классы',
+                price: '60 000',
+                color: 'from-purple-500 to-purple-600',
+                icon: 'BookOpen',
+                features: ['Билингвальное обучение', 'Проектная работа', 'Олимпиадная подготовка', '20+ кружков']
+              },
+              {
+                title: 'Старшая школа',
+                age: '10-11 классы',
+                price: '65 000',
+                color: 'from-orange-500 to-orange-600',
+                icon: 'GraduationCap',
+                features: ['Подготовка к ЕГЭ', 'Профориентация', 'Университетские стандарты', 'Индивидуальные планы']
+              }
+            ].map((plan, idx) => (
+              <Card key={idx} className="border-0 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 overflow-hidden">
+                <div className={`h-32 bg-gradient-to-br ${plan.color} flex flex-col items-center justify-center text-white`}>
+                  <Icon name={plan.icon as any} size={48} />
+                  <p className="text-sm mt-2 opacity-90">{plan.age}</p>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-center text-2xl mb-2">{plan.title}</CardTitle>
+                  <div className="text-center">
+                    <span className="text-4xl font-bold text-slate-900">{plan.price}</span>
+                    <span className="text-slate-600 ml-2">₽/мес</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <Icon name="Check" size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-slate-600">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className="w-full mt-6 bg-slate-900 hover:bg-slate-800">
+                    Записаться
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Дополнительные условия</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Percent" size={32} className="text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Скидки</h4>
+                <p className="text-sm text-slate-600">Для многодетных семей скидка 15%, для второго ребенка — 10%</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="CreditCard" size={32} className="text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Рассрочка</h4>
+                <p className="text-sm text-slate-600">Возможна оплата частями: помесячно или поквартально</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Gift" size={32} className="text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Вступительный взнос</h4>
+                <p className="text-sm text-slate-600">При оплате за год — взнос 50 000 ₽ в подарок!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="success" className="py-20 bg-gradient-to-b from-white to-sky-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Истории, которые вдохновляют</h2>
